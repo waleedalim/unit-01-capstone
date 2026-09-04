@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <nav className="navbar">
-        <Link to="/" className="logo">🥄 poonful</Link>
+        <Link to="/" className="logo">Spoonful</Link>
         <ul className="nav-links">
           <li><Link to="/recipes">Recipes</Link></li>
           {user ? (
