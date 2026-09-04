@@ -3,7 +3,6 @@
 A full-stack recipe management app built as culmination of first week of bootcamp capstone. Users can browse and search public recipes, and create an account to add, edit, and delete their own recipes.
  
 **Live App:** http://spoonful-waalim.s3-website-us-east-1.amazonaws.com
-**Live API:** http://ec2-100-60-71-190.compute-1.amazonaws.com:3000/api
  
 ---
  
@@ -14,7 +13,7 @@ A full-stack recipe management app built as culmination of first week of bootcam
 - **Protected dashboard**: logged-in users can create, edit, and delete their own recipes
 - **Route protection**: the dashboard redirects unauthenticated users to login
 - **Responsive design**: styled to match the project's Figma spec across screen sizes
-- **Edge-case handling**: permission and not-found errors are handled on edit/delete
+- **Edge case handling**: permission and not-found errors are handled on edit/delete
 ---
  
 ## Tech Stack
@@ -22,7 +21,7 @@ A full-stack recipe management app built as culmination of first week of bootcam
 - React + TypeScript (Vite)
 - React Router for client-side routing
 - Axios for API requests
-- Vitest + React Testing Library for component tests
+- Vitest for tests
 - Express
 - MongoDB
 - JWT authentication with bcrypt password hashing
@@ -34,10 +33,10 @@ A full-stack recipe management app built as culmination of first week of bootcam
  
 ```
 unit-01-capstone/
-├── backend/          # Express API, MongoDB models, JWT auth
-├── client/           # React + TypeScript frontend (Vite)
-├── infra/            # CloudFormation template for backend EC2 deployment
-├── design.md          # Original design spec / user flows
+├── backend/          # Express API, MongoDB, auth
+├── client/           # React + TypeScript frontend
+├── infra/            # template for backend EC2 deployment
+├── design.md         # Original design specs from the client(instrcutors in this case)
 └── readme.md
 ```
  
@@ -45,7 +44,7 @@ unit-01-capstone/
  
 ## Running Locally
  
-**Backend** (requires Docker):
+**Backend**:
 ```bash
 cd backend
 docker compose -f docker-compose.dev.yml up --build -d
@@ -60,13 +59,13 @@ npm run dev
 ```
 App runs at `http://localhost:5173`.
  
-> Note: `client/src/api/axios.ts` currently points at the deployed EC2 backend for production. To run fully locally, swap the `baseURL` back to `http://localhost:3000/api`.
+> Note: `client/src/api/axios.ts` currently points at the deployed EC2 backend for the live website. To run fully locally, swap the `baseURL` back to `http://localhost:3000/api`.
  
 ---
  
 ## Testing
  
-Component tests are written with Vitest and React Testing Library.
+tests are written with Vitest
  
 ```bash
 cd client
