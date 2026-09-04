@@ -90,7 +90,6 @@ npm run test
  
 ## Known Limitations / Future Work
  
-- Playwright end-to-end tests are not yet implemented
 - Dedicated unit tests for auth/helper utilities (separate from component tests) are not yet implemented
 - Ingredient quantities are currently stored as a placeholder value; the UI accepts a single comma-separated ingredients list rather than structured name/quantity pairs
 - No password reset flow
