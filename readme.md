@@ -80,7 +80,7 @@ npm run test
 |---|---|---|---|
 | POST | `/api/users/signup` | Create an account | No |
 | POST | `/api/users/login` | Log in | No |
-| GET | `/api/recipes` | List/search recipes (`?title=`, `?tag=`, `?ingredient=`) | No |
+| GET | `/api/recipes` | List/search recipes | No |
 | GET | `/api/recipes/:id` | Get a single recipe | No |
 | POST | `/api/recipes` | Create a recipe | Yes |
 | PUT | `/api/recipes/:id` | Update a recipe (owner only) | Yes |
