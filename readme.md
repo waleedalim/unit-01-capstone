@@ -64,9 +64,7 @@ App runs at `http://localhost:5173`.
 ---
  
 ## Testing
- 
-tests are written with Vitest
- 
+  
 ```bash
 cd client
 npm run test
@@ -88,13 +86,13 @@ npm run test
  
 ---
  
-## Known Limitations / Future Work
+## Known Limitations
  
-- Dedicated unit tests for auth/helper utilities (separate from component tests) are not yet implemented
+- Dedicated unit tests for utilities (separate from e2e tests) are not yet implemented
 - Ingredient quantities are currently stored as a placeholder value; the UI accepts a single comma-separated ingredients list rather than structured name/quantity pairs
 - No password reset flow
 ---
  
 ## Author
  
-Built by Waleed Alim for Bootcamp week 01 capston.
+Built by Waleed Alim for Bootcamp week 01 capstone.
