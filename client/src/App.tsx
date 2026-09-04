@@ -19,19 +19,24 @@ function App() {
 
   return (
     <div>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/recipes">Recipes</Link> |{" "}
-        {user ? (
-          <>
-            <Link to="/dashboard">Dashboard</Link> |{" "}
-            <button onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
-          </>
-        )}
+      <nav className="navbar">
+        <Link to="/" className="logo">🥄 poonful</Link>
+        <ul className="nav-links">
+          <li><Link to="/recipes">Recipes</Link></li>
+          {user ? (
+            <>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+              <li><button className="btn btn-secondary" onClick={handleLogout}>Logout</button></li>
+            </>
+          ) : (
+            <>
+              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/signup">Signup</Link></li>
+            </>
+          )}
+        </ul>
       </nav>
+
 
       <Routes>
         <Route path="/" element={<Landing />} />

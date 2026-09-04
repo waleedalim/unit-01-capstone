@@ -97,68 +97,79 @@ function Dashboard(){
        fetchMyRecipes();
    }
 
-   return(
-       <div>
-           <h1>{editingId ? "Edit Recipe" : "Create a Recipe"}</h1>
-           <form onSubmit={handleSubmit}>
-               <h3>Title</h3>
-               <input
-                   placeholder="Title"
-                   value={title}
-                   onChange={(e) => setTitle(e.target.value)}
-                   required
-               />
-               <br />
-               <h3>Ingredients</h3>
-               <input
-                   placeholder="Ingredients"
-                   value={ingredientsText}
-                   onChange={(e) => setIngredientsText(e.target.value)}
-                   required />
-               <br />
-               <h3>Instructions</h3>
-               <input
-                   placeholder="Instrcutions"
-                   value={instructionsText}
-                   onChange={(e) => setInstrcutionText(e.target.value)}
-                   required />
+    return(
+        <div className="page-container">
+            <p>Welcome back! Manage your recipes or add a new one.</p>
 
-               <br />
-               <h3>Tags</h3>
-               <input
-                   placeholder="Tags"
-                   value={tags}
-                   onChange={(e) => setTags(e.target.value)}
-                   required />
+            <h2>Your Recipes</h2>
+            {myRecipes.length === 0 && <p>You haven't created any recipes yet.</p>}
+            <div className="card-grid">
+                {myRecipes.map((r) => (
+                    <div className="recipe-card" key={r._id}>
+                        <div className="recipe-card-body">
+                            <h3>{r.title}</h3>
+                            <div>
+                                <button className="btn btn-secondary" onClick={() => handleEditClick(r)}>Edit</button>{" "}
+                                <button className="btn btn-secondary" onClick={() => handleDelete(r._id)}>Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-               <br />
-               <h3>Image</h3>
-               <input
-                   placeholder="Image Url"
-                   value={image}
-                   onChange={(e) => setImage(e.target.value)}
-                   required />
+            <hr style={{ margin: "32px 0" }} />
 
-                   <br />
-                   <button type="submit">{editingId ? "Update" : "Save"}</button>
-                   {editingId && (
-                       <button type="button" onClick={resetForm}>Cancel</button>
-                   )}
-           </form>
+            <h1>{editingId ? "Edit Recipe" : "Create a Recipe"}</h1>
+            <form onSubmit={handleSubmit} style={{ maxWidth: "500px" }}>
+                <div className="form-group">
+                    <label>Title</label>
+                    <input
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Ingredients</label>
+                    <input
+                        placeholder="Ingredients"
+                        value={ingredientsText}
+                        onChange={(e) => setIngredientsText(e.target.value)}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>Instructions</label>
+                    <input
+                        placeholder="Instructions"
+                        value={instructionsText}
+                        onChange={(e) => setInstrcutionText(e.target.value)}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>Tags</label>
+                    <input
+                        placeholder="Tags"
+                        value={tags}
+                        onChange={(e) => setTags(e.target.value)}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>Image</label>
+                    <input
+                        placeholder="Image Url"
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
+                        required />
+                </div>
 
-           <h2>Your Recipes</h2>
-           {myRecipes.length === 0 && <p>You haven't created any recipes yet.</p>}
-           <ul>
-               {myRecipes.map((r) => (
-                   <li key={r._id}>
-                       {r.title}{" "}
-                       <button onClick={() => handleEditClick(r)}>Edit</button>
-                       <button onClick={() => handleDelete(r._id)}>Delete</button>
-                   </li>
-               ))}
-           </ul>
-       </div>
-   );
+                <button type="submit" className="btn btn-primary">{editingId ? "Update" : "Save"}</button>{" "}
+                {editingId && (
+                    <button type="button" className="btn btn-secondary" onClick={resetForm}>Cancel</button>
+                )}
+            </form>
+        </div>
+    );
 }
 
 export default Dashboard;

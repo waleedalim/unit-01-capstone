@@ -41,30 +41,40 @@ function Recipe(){
     }
 
     return (
-        <div>
-            <h1> Recipe List</h1>
-            <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    placeholder="Search recipes"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button type="submit">Search</button>
-            </form>
+    <div className="page-container">
+        <h1>Recipe List</h1>
+        <form onSubmit={handleSearch} className="form-group" style={{ maxWidth: "400px" }}>
+        <input
+            type="text"
+            placeholder="Search recipes"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+        />
+        </form>
 
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {!loading && recipes.length === 0 && <p>We couldn't find any recipes.</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p className="error-text">{error}</p>}
+        {!loading && recipes.length === 0 && <p>We couldn't find any recipes.</p>}
 
-            <ul>
-                {recipes.map((recipe) => (
-                    <li key={recipe._id}>
-                        <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
-                    </li>
-                ))}
-            </ul>
+        <div className="card-grid">
+        {recipes.map((recipe) => (
+            <div className="recipe-card" key={recipe._id}>
+            {recipe.image && <img src={recipe.image} alt={recipe.title} />}
+            <div className="recipe-card-body">
+                <h3>{recipe.title}</h3>
+                {recipe.tags.length > 0 && (
+                <div className="tag-list">
+                    {recipe.tags.map((tag) => (
+                    <span className="tag" key={tag}>{tag}</span>
+                    ))}
+                </div>
+                )}
+                <Link to={`/recipes/${recipe._id}`}>View Recipe</Link>
+            </div>
+            </div>
+        ))}
         </div>
+    </div>
     );
 }
 

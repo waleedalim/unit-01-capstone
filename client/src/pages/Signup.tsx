@@ -22,24 +22,32 @@ function Signup(){
     }
 
     return(
-        <div>
-            <h1> Create an Account</h1>
+        <div className="page-container" style={{ maxWidth: "400px" }}>
+            <h1>Create an Account</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPwd(e.target.value)}
-                    required
-                    />
-                    <button type="submit">Create Account</button>
+                <div className="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        />
+                </div>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPwd(e.target.value)}
+                        required
+                        />
+                </div>
+                <button type="submit" className="btn btn-primary" style={{ width: "100%" }}>Create Account</button>
             </form>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="error-text">{error}</p>}
         </div>
     );
 }
